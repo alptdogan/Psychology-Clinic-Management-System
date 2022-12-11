@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Add Client</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+</head>
+
+<body>
+
+<div th:insert="header :: header"></div>
+
+<br>
+<div class="container">
+
+
+  <form action="#" th:action="@{/clients/addClient}" th:object="${clients}" method="POST">
+
+
+    <!-- <input type="hidden" th:field="${clients.id}"/> This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
+
+
+    <div class="form-group row">
+      <input type="number" placeholder="Id" th:field="${clients.id}">
+    </div>
+
+    <div class="form-group row">
+      <input type="text" placeholder="First Name" th:field="${clients.firstName}">
+    </div>
+
+    <div class="form-group row">
+      <input type="text" placeholder="Last Name" th:field="${clients.lastName}">
+    </div>
+
+    <div class="form-group row">
+      <input type="text" placeholder="Email" th:field="${clients.email}">
+    </div>
+
+    <button class="btn btn-info col-2" type="submit">Create Client</button>
+
+  </form>
+</div>
+
+</body>
+
+</html>
