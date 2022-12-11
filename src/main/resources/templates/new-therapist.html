@@ -46,10 +46,10 @@
     </div>
 
     <div class="form-group row">
-      <select th:field="*{therapyApproach}" multiple="multiple">
-        <option th:each = "therapyApproach : ${allApproaches}"
-                th:value = "${therapyApproach.id}"
-                th:text = "${therapyApproach.lastName}">
+      <select th:field="*{approaches}" multiple="multiple">
+        <option th:each = "approaches : ${allApproaches}"
+                th:value = "${approaches.id}"
+                th:text = "${approaches.approachName}">
         </option>
       </select>
     </div>

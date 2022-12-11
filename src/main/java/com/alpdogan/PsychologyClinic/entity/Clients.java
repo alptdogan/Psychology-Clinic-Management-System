@@ -27,7 +27,7 @@ public class Clients {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Therapist therapist;
 

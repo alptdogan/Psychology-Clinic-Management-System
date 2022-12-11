@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,5 +24,9 @@ public class TherapyApproach {
 
     @Column(name = "approach_name")
     private String approachName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Therapist therapist;
 
 }
