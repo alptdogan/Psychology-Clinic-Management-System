@@ -33,5 +33,8 @@ public class Therapist {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Clients> clients = new ArrayList<>();
 
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    private List<TherapyApproach> approaches = new ArrayList<>();
+
 
 }

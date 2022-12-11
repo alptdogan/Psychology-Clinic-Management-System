@@ -30,6 +30,7 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Clients</th>
+      <th>Approaches</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -40,6 +41,7 @@
       <td th:text="${aTherapist.lastName}"/>
       <td th:text="${aTherapist.email}"/>
       <td th:text="${aTherapist.clients}"/>
+      <td th:text="${aTherapist.therapyApproach}"/>
       <td>
 
         <a th:href="@{/therapists/details/(id=${aTherapist.id})}"

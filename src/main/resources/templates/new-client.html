@@ -22,10 +22,6 @@
 
   <form action="#" th:action="@{/clients/addClient}" th:object="${clients}" method="POST">
 
-
-    <!-- <input type="hidden" th:field="${clients.id}"/> This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-
-
     <div class="form-group row">
       <input type="number" placeholder="Id" th:field="${clients.id}">
     </div>

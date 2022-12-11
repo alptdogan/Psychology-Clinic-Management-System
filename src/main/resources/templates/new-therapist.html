@@ -20,8 +20,6 @@
 
   <form th:action="@{/therapists/addTherapist}" th:object="${therapist}" method="POST">
 
-    <!-- <input type="hidden" th:field="${therapist.id}"/> This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
-
     <div class="form-group row">
       <input type="text" placeholder="Id" th:field="${therapist.id}">
     </div>
@@ -43,6 +41,15 @@
         <option th:each = "clients : ${allClients}"
                 th:value = "${clients.id}"
                 th:text = "${clients.lastName}">
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group row">
+      <select th:field="*{therapyApproach}" multiple="multiple">
+        <option th:each = "therapyApproach : ${allApproaches}"
+                th:value = "${therapyApproach.id}"
+                th:text = "${therapyApproach.lastName}">
         </option>
       </select>
     </div>

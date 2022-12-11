@@ -40,7 +40,7 @@ public class ClientsController {
     public String registerClient(Model model) {
 
         Clients clients = new Clients();
-        model.addAttribute("therapist", clients);
+        model.addAttribute("clients", clients);
 
         return "new-client";
 

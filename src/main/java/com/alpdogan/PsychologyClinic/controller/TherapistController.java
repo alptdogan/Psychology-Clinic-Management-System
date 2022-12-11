@@ -2,8 +2,10 @@ package com.alpdogan.PsychologyClinic.controller;
 
 import com.alpdogan.PsychologyClinic.entity.Clients;
 import com.alpdogan.PsychologyClinic.entity.Therapist;
+import com.alpdogan.PsychologyClinic.entity.TherapyApproach;
 import com.alpdogan.PsychologyClinic.service.ClientsService;
 import com.alpdogan.PsychologyClinic.service.TherapistService;
+import com.alpdogan.PsychologyClinic.service.TherapyApproachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,9 @@ public class TherapistController {
     @Autowired
     private ClientsService clientsService;
 
+    @Autowired
+    private TherapyApproachService therapyApproachService;
+
     @GetMapping
     public String displayTherapists(Model model) {
 
@@ -36,9 +41,11 @@ public class TherapistController {
 
         Therapist therapist = new Therapist();
         List<Clients> clients = clientsService.getAllClients();
+        List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
 
         model.addAttribute("therapist", therapist);
         model.addAttribute("allClients", clients);
+        model.addAttribute("allApproaches", approaches);
 
         return "new-therapist";
 
@@ -49,16 +56,18 @@ public class TherapistController {
 
         Therapist therapist = new Therapist();
         List<Clients> clients = clientsService.getAllClients();
+        List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
 
         model.addAttribute("therapist", therapist);
         model.addAttribute("allClients", clients);
+        model.addAttribute("allApproaches", approaches);
 
         return "new-therapist";
 
     }
 
     @PostMapping("/addTherapist")
-    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist, @RequestParam List<Long> clients) {
+    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist, @RequestParam List<Long> clients, @RequestParam List<Long> approaches) {
 
         therapistService.createTherapist(therapist);
 
@@ -69,11 +78,13 @@ public class TherapistController {
     @GetMapping("/update")
     public String displayTherapistUpdateForm(@RequestParam("id") int id, Model model) {
 
-        Therapist therapist = therapistService.getTherapistById(id);
+        Therapist therapist = new Therapist();
         List<Clients> clients = clientsService.getAllClients();
+        List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
 
         model.addAttribute("therapist", therapist);
         model.addAttribute("allClients", clients);
+        model.addAttribute("allApproaches", approaches);
 
         return "new-therapist";
 
