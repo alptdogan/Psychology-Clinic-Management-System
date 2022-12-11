@@ -7,6 +7,8 @@ import lombok.ToString;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,10 +27,11 @@ public class Therapist {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "phone_number")
-    private int phoneNumber;
     @Column(name = "email")
     private String email;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Clients> clients = new ArrayList<>();
 
 
 }

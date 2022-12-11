@@ -1,6 +1,8 @@
 package com.alpdogan.PsychologyClinic.controller;
 
+import com.alpdogan.PsychologyClinic.entity.Clients;
 import com.alpdogan.PsychologyClinic.entity.Therapist;
+import com.alpdogan.PsychologyClinic.service.ClientsService;
 import com.alpdogan.PsychologyClinic.service.TherapistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class TherapistController {
     @Autowired
     private TherapistService therapistService;
 
+    @Autowired
+    private ClientsService clientsService;
+
     @GetMapping
     public String displayTherapists(Model model) {
 
@@ -30,7 +35,10 @@ public class TherapistController {
     public String registerTherapist(Model model) {
 
         Therapist therapist = new Therapist();
+        List<Clients> clients = clientsService.getAllClients();
+
         model.addAttribute("therapist", therapist);
+        model.addAttribute("allClients", clients);
 
         return "new-therapist";
 
@@ -40,14 +48,17 @@ public class TherapistController {
     public String displayTherapistForm (Model model) {
 
         Therapist therapist = new Therapist();
+        List<Clients> clients = clientsService.getAllClients();
+
         model.addAttribute("therapist", therapist);
+        model.addAttribute("allClients", clients);
 
         return "new-therapist";
 
     }
 
     @PostMapping("/addTherapist")
-    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist) {
+    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist, @RequestParam List<Long> clients) {
 
         therapistService.createTherapist(therapist);
 
@@ -59,7 +70,10 @@ public class TherapistController {
     public String displayTherapistUpdateForm(@RequestParam("id") int id, Model model) {
 
         Therapist therapist = therapistService.getTherapistById(id);
+        List<Clients> clients = clientsService.getAllClients();
+
         model.addAttribute("therapist", therapist);
+        model.addAttribute("allClients", clients);
 
         return "new-therapist";
 

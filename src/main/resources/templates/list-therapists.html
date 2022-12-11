@@ -19,7 +19,7 @@
 <div class="container">
   <h3>Therapists Directory</h3>
   <hr>
-  
+
   <br></br>
 
   <table class="table table-bordered table-striped">
@@ -28,8 +28,8 @@
       <th>Id</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Phone Number</th>
       <th>Email</th>
+      <th>Clients</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -38,8 +38,8 @@
       <td th:text="${aTherapist.id}"/>
       <td th:text="${aTherapist.firstName}"/>
       <td th:text="${aTherapist.lastName}"/>
-      <td th:text="${aTherapist.phoneNumber}"/>
       <td th:text="${aTherapist.email}"/>
+      <td th:text="${aTherapist.clients}"/>
       <td>
 
         <a th:href="@{/therapists/details/(id=${aTherapist.id})}"
