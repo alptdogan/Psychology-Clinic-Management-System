@@ -32,7 +32,6 @@ public class TherapyApproach {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JsonIgnore
     private Set<Therapist> therapist = new HashSet<>();
 
 }

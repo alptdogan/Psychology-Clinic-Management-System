@@ -34,7 +34,6 @@ public class Clients {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JsonIgnore
     private Therapist therapist;
 
 
