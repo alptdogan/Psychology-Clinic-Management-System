@@ -34,9 +34,9 @@ public class Clients {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JoinTable(name = "therapist_and_clients",
+    /*@JoinTable(name = "therapist_and_clients",
             joinColumns = { @JoinColumn(name = "fk_client") },
-            inverseJoinColumns = { @JoinColumn(name = "fk_therapist") })
+            inverseJoinColumns = { @JoinColumn(name = "fk_therapist") })*/
     private Therapist therapist;
 
 

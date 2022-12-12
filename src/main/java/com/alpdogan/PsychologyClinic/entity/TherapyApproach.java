@@ -37,6 +37,6 @@ public class TherapyApproach {
     @JoinTable(name = "therapist_and_approaches",
             joinColumns = { @JoinColumn(name = "fk_approach") },
             inverseJoinColumns = { @JoinColumn(name = "fk_therapist") })
-    private Set<Therapist> therapist = new HashSet<Therapist>();
+    private Set<Therapist> therapist = new HashSet<>();
 
 }
