@@ -22,10 +22,6 @@
   <form action="#" th:action="@{/approach/addApproach}" th:object="${therapyApproach}" method="POST">
 
     <div class="form-group row">
-      <input type="number" placeholder="Id" th:field="${therapyApproach.id}">
-    </div>
-
-    <div class="form-group row">
       <input type="text" placeholder="Approach Name" th:field="${therapyApproach.approachName}">
     </div>
 
