@@ -36,21 +36,6 @@ public class TherapistController {
 
     }
 
-    @GetMapping("/register")
-    public String registerTherapist(Model model) {
-
-        Therapist therapist = new Therapist();
-        List<Clients> clients = clientsService.getAllClients();
-        List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
-
-        model.addAttribute("therapist", therapist);
-        model.addAttribute("allClients", clients);
-        model.addAttribute("allApproaches", approaches);
-
-        return "new-therapist";
-
-    }
-
     @GetMapping("/new")
     public String displayTherapistForm (Model model) {
 

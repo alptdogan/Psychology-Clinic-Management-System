@@ -36,16 +36,6 @@ public class ClientsController {
 
     }
 
-    @GetMapping("/register")
-    public String registerClient(Model model) {
-
-        Clients clients = new Clients();
-        model.addAttribute("clients", clients);
-
-        return "new-client";
-
-    }
-
     @PostMapping("/addClient")
     public String createClient (@ModelAttribute("clients") Clients client) {
 

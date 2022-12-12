@@ -36,16 +36,6 @@ public class TherapyApproachController {
 
     }
 
-    @GetMapping("/register")
-    public String registerApproach(Model model) {
-
-        TherapyApproach approach = new TherapyApproach();
-        model.addAttribute("therapyApproach", approach);
-
-        return "new-approach";
-
-    }
-
     @PostMapping("/addApproach")
     public String createApproach(@ModelAttribute("therapyApproach") TherapyApproach approach) {
 
