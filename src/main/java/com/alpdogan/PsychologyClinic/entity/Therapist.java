@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,14 +33,20 @@ public class Therapist {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
     })
+    @JoinColumn
     private List<Clients> clients = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
     })
+    @JoinColumn
     private Set<TherapyApproach> approaches = new HashSet<>();
 
 

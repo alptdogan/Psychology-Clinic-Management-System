@@ -1,14 +1,13 @@
 package com.alpdogan.PsychologyClinic.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -27,11 +26,13 @@ public class TherapyApproach {
     @Column(name = "approach_name")
     private String approachName;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
     })
-    @JoinColumn
+    @JsonIgnore
     private Set<Therapist> therapist = new HashSet<>();
 
 }

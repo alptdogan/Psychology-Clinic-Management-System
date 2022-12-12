@@ -1,5 +1,6 @@
 package com.alpdogan.PsychologyClinic.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,11 @@ public class Clients {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
-            CascadeType.MERGE
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
     })
-    @JoinColumn
+    @JsonIgnore
     private Therapist therapist;
 
 
