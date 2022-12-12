@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -32,6 +34,6 @@ public class TherapyApproach {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    private Set<Therapist> therapist = new HashSet<>();
+    private List<Therapist> therapist = new ArrayList<>();
 
 }

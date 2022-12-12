@@ -47,7 +47,7 @@ public class Therapist {
             CascadeType.REFRESH
     })
     @JoinColumn
-    private Set<TherapyApproach> approaches = new HashSet<>();
+    private List<TherapyApproach> approaches = new ArrayList<>();
 
 
 }
