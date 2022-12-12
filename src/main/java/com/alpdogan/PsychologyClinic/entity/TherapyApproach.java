@@ -34,6 +34,9 @@ public class TherapyApproach {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    private List<Therapist> therapist = new ArrayList<>();
+    @JoinTable(name = "therapist_and_approaches",
+            joinColumns = { @JoinColumn(name = "fk_approach") },
+            inverseJoinColumns = { @JoinColumn(name = "fk_therapist") })
+    private Set<Therapist> therapist = new HashSet<Therapist>();
 
 }

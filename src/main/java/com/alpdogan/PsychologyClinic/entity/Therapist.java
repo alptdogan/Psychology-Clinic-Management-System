@@ -31,23 +31,21 @@ public class Therapist {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="therapist", cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JoinColumn
-    private List<Clients> clients = new ArrayList<>();
+    private List<Clients> clients = new ArrayList<Clients>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy="therapist", cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JoinColumn
-    private List<TherapyApproach> approaches = new ArrayList<>();
+    private Set<TherapyApproach> approaches = new HashSet<TherapyApproach>();
 
 
 }
