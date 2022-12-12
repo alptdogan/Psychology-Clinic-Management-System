@@ -1,6 +1,5 @@
 package com.alpdogan.PsychologyClinic.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -34,9 +31,6 @@ public class TherapyApproach {
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    @JoinTable(name = "therapist_and_approaches",
-            joinColumns = { @JoinColumn(name = "fk_approach") },
-            inverseJoinColumns = { @JoinColumn(name = "fk_therapist") })
-    private Set<Therapist> therapist = new HashSet<>();
+    private List<Therapist> therapist = new ArrayList<>();
 
 }

@@ -31,8 +31,7 @@ public class Therapist {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, //mappedBy="therapist",
-            cascade = {
+    @OneToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.DETACH,
@@ -40,13 +39,13 @@ public class Therapist {
     })
     private List<Clients> clients = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy="therapist", cascade = {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
             CascadeType.DETACH,
             CascadeType.REFRESH
     })
-    private Set<TherapyApproach> approaches = new HashSet<>();
+    private List<TherapyApproach> approaches = new ArrayList<>();
 
 
 }
