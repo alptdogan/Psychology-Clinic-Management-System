@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -25,8 +27,11 @@ public class TherapyApproach {
     @Column(name = "approach_name")
     private String approachName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinColumn
-    private Therapist therapist;
+    private Set<Therapist> therapist = new HashSet<>();
 
 }
