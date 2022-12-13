@@ -47,5 +47,13 @@ public class Therapist {
     })
     private List<TherapyApproach> approaches = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH
+    })
+    private List<Modality> modalities = new ArrayList<>();
+
 
 }
