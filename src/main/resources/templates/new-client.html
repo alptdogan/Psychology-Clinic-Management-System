@@ -23,11 +23,7 @@
   <form action="#" th:action="@{/clients/addClient}" th:object="${clients}" method="POST">
 
     <div class="form-group row">
-      <input type="text" placeholder="First Name" th:field="${clients.firstName}">
-    </div>
-
-    <div class="form-group row">
-      <input type="text" placeholder="Last Name" th:field="${clients.lastName}">
+      <input type="text" placeholder="Full Name" th:field="${clients.fullName}">
     </div>
 
     <div class="form-group row">
