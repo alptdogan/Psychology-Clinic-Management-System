@@ -31,7 +31,9 @@
     </div>
 
     <div class="form-group row">
-      <input type="text" placeholder="Therapist Notes" th:field="${clients.therapistNotes}">
+      <input type="text"
+             placeholder="Therapist Notes For Secretary (Date of the next session, postponements, client's complaints about the clinic etc.)"
+             th:field="${clients.therapistNotes}">
     </div>
 
     <button class="btn btn-info col-2" type="submit">Create Client</button>
