@@ -1,9 +1,11 @@
 package com.alpdogan.PsychologyClinic.controller;
 
 import com.alpdogan.PsychologyClinic.entity.Clients;
+import com.alpdogan.PsychologyClinic.entity.Modality;
 import com.alpdogan.PsychologyClinic.entity.Therapist;
 import com.alpdogan.PsychologyClinic.entity.TherapyApproach;
 import com.alpdogan.PsychologyClinic.service.ClientsService;
+import com.alpdogan.PsychologyClinic.service.ModalityService;
 import com.alpdogan.PsychologyClinic.service.TherapistService;
 import com.alpdogan.PsychologyClinic.service.TherapyApproachService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class TherapistController {
     @Autowired
     private TherapyApproachService therapyApproachService;
 
+    @Autowired
+    private ModalityService modalityService;
+
     @GetMapping
     public String displayTherapists(Model model) {
 
@@ -42,17 +47,22 @@ public class TherapistController {
         Therapist therapist = new Therapist();
         List<Clients> clients = clientsService.getAllClients();
         List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
+        List<Modality> modalities = modalityService.getAllModalities();
 
         model.addAttribute("therapist", therapist);
         model.addAttribute("allClients", clients);
         model.addAttribute("allApproaches", approaches);
+        model.addAttribute("allModalities", modalities);
 
         return "new-therapist";
 
     }
 
     @PostMapping("/addTherapist")
-    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist, @RequestParam List<Long> clients, @RequestParam List<Long> approaches) {
+    public String createTherapist (@ModelAttribute ("therapist") Therapist therapist,
+                                   @RequestParam List<Long> clients,
+                                   @RequestParam List<Long> approaches,
+                                   @RequestParam List<Long> modalities) {
 
         therapistService.createTherapist(therapist);
 
@@ -66,10 +76,12 @@ public class TherapistController {
         Therapist therapist = new Therapist();
         List<Clients> clients = clientsService.getAllClients();
         List<TherapyApproach> approaches = therapyApproachService.getAllApproaches();
+        List<Modality> modalities = modalityService.getAllModalities();
 
         model.addAttribute("therapist", therapist);
         model.addAttribute("allClients", clients);
         model.addAttribute("allApproaches", approaches);
+        model.addAttribute("allModalities", modalities);
 
         return "new-therapist";
 
