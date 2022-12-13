@@ -28,7 +28,6 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
     <tr>
-      <th>Id</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
@@ -37,7 +36,6 @@
     </thead>
     <tbody>
     <tr th:each="aTherapist : ${therapist}">
-      <td th:text="${aTherapist.id}"/>
       <td th:text="${aTherapist.firstName}"/>
       <td th:text="${aTherapist.lastName}"/>
       <td th:text="${aTherapist.email}"/>

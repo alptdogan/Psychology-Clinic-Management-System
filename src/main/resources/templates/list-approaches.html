@@ -30,13 +30,11 @@
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
     <tr>
-      <th>Id</th>
       <th>Approach Name</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="aTherapyApproach : ${therapyApproach}">
-      <td th:text="${aTherapyApproach.id}"/>
       <td th:text="${aTherapyApproach.approachName}"/>
       <td>
         <a th:href="@{/approach/update(id=${aTherapyApproach.id})}"
