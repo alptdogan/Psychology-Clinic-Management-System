@@ -17,51 +17,111 @@
 <div th:insert="header :: header"></div>
 
 <div class="container">
-  <h3>Therapist Information</h3>
-  <hr>
 
-  <br></br>
+  <h2>Therapist Information</h2>
 
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
+  <table class="table table-striped" style="width:600px;">
     <tr>
-      <th>Id</th>
       <th>First Name</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Clients</th>
-      <th>Approaches</th>
-      <th>Modality</th>
-      <th>Actions</th>
+      <td th:text="${therapist.firstName}">[First Name]</td>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="aTherapist : ${therapist}">
-      <td th:text="${aTherapist.id}"/>
-      <td th:text="${aTherapist.firstName}"/>
-      <td th:text="${aTherapist.lastName}"/>
-      <td th:text="${aTherapist.email}"/>
-      <td th:text="${aTherapist.clients[0].fullName}"/>
-      <td th:text="${aTherapist.approaches[0].approachName}"/>
-      <td th:text="${aTherapist.modalities[0].modalityName}"/>
-      <td>
-        <a th:href="@{/therapists/update(id=${aTherapist.id})}"
-           class="btn btn-info btn-sm">
-          Update
-        </a>
+    <tr>
+      <th>Last Name</th>
+      <td th:text="${therapist.lastName}">[Last Name]</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td th:text="${therapist.email}">[Email]</td>
+    </tr>
+    <tr>
+      <a th:href="@{/therapists/update(id=${therapist.id})}"
+         class="btn btn-info btn-sm">
+        Update
+      </a>
 
-        <a th:href="@{/therapists/delete/(id=${aTherapist.id})}"
-           class="btn btn-danger btn-sm"
-           onClick="if (!(confirm('Are you sure you want to delete this therapist?'))) return false">
-          Delete
-        </a>
+      <a th:href="@{/therapists/delete/(id=${therapist.id})}"
+         class="btn btn-danger btn-sm"
+         onClick="if (!(confirm('Are you sure you want to delete this therapist?'))) return false">
+        Delete
+      </a>
+    </tr>
+  </table>
 
+
+  <h2>Clients</h2>
+
+  <table class="table" style="width:600px;" th:each="clients : ${therapist.clients[0]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dt>Client Name</dt>
+          <dd th:text="${therapist.clients[0].fullName}">[Full Name]</dd>
+          <dt>Email</dt>
+          <dd th:text="${therapist.clients[0].email}">[Email]</dd>
+        </dl>
       </td>
     </tr>
-    </tbody>
-
   </table>
+  <table class="table" style="width:600px;" th:each="clients : ${therapist.clients[1]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dt>Client Name</dt>
+          <dd th:text="${therapist.clients[1].fullName}">[Full Name]</dd>
+          <dt>Email</dt>
+          <dd th:text="${therapist.clients[1].email}">[Email]</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+
+
+  <h2>Approaches</h2>
+
+  <table class="table" style="width:600px;" th:each="therapyApproach : ${therapist.approaches[0]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dd th:text="${therapist.approaches[0].approachName}">[Full Name]</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+  <table class="table" style="width:600px;" th:each="therapyApproach : ${therapist.approaches[1]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dd th:text="${therapist.approaches[1].approachName}">[Full Name]</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+
+
+  <h2>Modality</h2>
+
+  <table class="table" style="width:600px;" th:each="modality : ${therapist.modalities[0]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dd th:text="${therapist.modalities[0].modalityName}">[Full Name]</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+  <table class="table" style="width:600px;" th:each="modality : ${therapist.modalities[1]}">
+    <tr>
+      <td valign="top" style="width: 120px;">
+        <dl class="dl-horizontal">
+          <dd th:text="${therapist.modalities[1].modalityName}">[Full Name]</dd>
+        </dl>
+      </td>
+    </tr>
+  </table>
+
+
 </div>
+
 </body>
 
 </html>
