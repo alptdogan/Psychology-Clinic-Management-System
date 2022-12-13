@@ -28,6 +28,7 @@
       <th>Id</th>
       <th>Full Name</th>
       <th>Email</th>
+      <th>Therapist Notes</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -36,6 +37,7 @@
       <td th:text="${aClient.id}"/>
       <td th:text="${aClient.fullName}"/>
       <td th:text="${aClient.email}"/>
+      <td th:text="${aClient.therapistNotes}"/>
       <td>
         <a th:href="@{/clients/update(id=${aClient.id})}"
            class="btn btn-info btn-sm">
