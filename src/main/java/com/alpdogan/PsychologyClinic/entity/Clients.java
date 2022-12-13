@@ -26,6 +26,9 @@ public class Clients {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "therapist_notes")
+    private String therapistNotes;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
