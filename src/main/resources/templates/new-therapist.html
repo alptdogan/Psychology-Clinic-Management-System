@@ -47,6 +47,13 @@
                 th:value = "${approaches.id}"
                 th:text = "${approaches.approachName}">
         </option>
+
+        <div class="form-group row">
+          <select th:field="*{modalities}" multiple="multiple">
+            <option th:each = "modalities : ${allModalities}"
+                    th:value = "${modalities.id}"
+                    th:text = "${modalities.modalityName}">
+            </option>
       </select>
     </div>
 
