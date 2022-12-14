@@ -44,8 +44,22 @@ public class SecurityConfiguration {
                 .authorizeRequests(auth -> {
                     try {
                         auth.antMatchers("/home").permitAll()
-                                .antMatchers("/clients/**").authenticated()
-                                .antMatchers("/therapists/**").authenticated()
+                                .antMatchers("/modality/**").hasRole("ADMIN")
+
+                                .antMatchers("/approach/**").hasRole("ADMIN")
+
+                                .antMatchers("/clients/new").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/clients/addClient").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/clients/details").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/clients/update").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/clients/delete").hasRole("ADMIN")
+
+                                .antMatchers("/therapists/new").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/therapists/addTherapist").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/therapists/details").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/therapists/update").hasAnyRole("ADMIN", "THERAPIST")
+                                .antMatchers("/therapists/delete").hasRole("ADMIN")
+
                                 .antMatchers("/dashboard").authenticated()
                                 .and().formLogin().loginPage("/login")
                                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
