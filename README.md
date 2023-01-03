@@ -19,3 +19,5 @@ username: admin || password: admin
 Technologies used:
 
 Spring Boot, Spring Data JPA, MySQL, Lombok, Spring Security, Thmeleaf.
+
+There is also a file named "images" with the screenshots of the project for you to cast an eye easily.
